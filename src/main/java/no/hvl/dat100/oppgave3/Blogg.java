@@ -5,52 +5,78 @@ import no.hvl.dat100.oppgave1.*;
 
 public class Blogg {
 
-	// TODO: objektvariable 
+	// TODO: objektvariable
+	private Innlegg[] innleggtabell;
+	private int nesteLedig;
 
 	public Blogg() {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		innleggtabell = new Innlegg[20];
+		nesteLedig = 0;
 	}
 
 	public Blogg(int lengde) {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		innleggtabell = new Innlegg[lengde];
+		nesteLedig = 0;
 	}
 
 	public int getAntall() {
-		throw new UnsupportedOperationException(TODO.method());
+		return nesteLedig;
 	}
 	
 	public Innlegg[] getSamling() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return innleggtabell;
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
-
-		throw new UnsupportedOperationException(TODO.method());
+		int pos = 0;
+		for (int i = 0; i < nesteLedig; i++) {
+			if (innleggtabell[i].erLik(innlegg)) {
+				return pos;
+			}
+			pos++;
+		}
+		return -1;
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
+		return finnInnlegg(innlegg) != -1;
 	}
 
 	public boolean ledigPlass() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		for (Innlegg innlegg : innleggtabell) {
+			if (innlegg == null) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public boolean leggTil(Innlegg innlegg) {
-
-		throw new UnsupportedOperationException(TODO.method());
+		if (!finnes(innlegg)) {
+			innleggtabell[nesteLedig++] = innlegg;
+			return true;
+		}
+		return false;
 	}
 	
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+		String str = nesteLedig + "\n";
+
+		for (int i = 0; i < nesteLedig; i++) {
+			str += innleggtabell[i].toString();
+		}
+
+		return str;
 	}
 
 	// valgfrie oppgaver nedenfor
 	
 	public void utvid() {
-		throw new UnsupportedOperationException(TODO.method());
+		Innlegg[] nyTab = new Innlegg[innleggtabell.length * 2];
+		for (int i = 0; i < nesteLedig; i++) {
+			nyTab[i] = innleggtabell[i];
+		}
+		innleggtabell = nyTab;
 	}
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
