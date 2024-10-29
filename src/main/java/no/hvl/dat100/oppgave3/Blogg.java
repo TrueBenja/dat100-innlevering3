@@ -3,6 +3,8 @@ package no.hvl.dat100.oppgave3;
 import no.hvl.dat100.common.TODO;
 import no.hvl.dat100.oppgave1.*;
 
+import java.util.ArrayList;
+
 public class Blogg {
 
 	// TODO: objektvariable
@@ -80,19 +82,35 @@ public class Blogg {
 	}
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
-
-		throw new UnsupportedOperationException(TODO.method());
-		
+		if (nesteLedig == innleggtabell.length) {
+			utvid();
+		}
+		return leggTil(innlegg);
 	}
 	
 	public boolean slett(Innlegg innlegg) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		for (int i = 0; i < nesteLedig; i++) {
+			if(innleggtabell[i].erLik(innlegg)) {
+				innleggtabell[i] = innleggtabell[nesteLedig - 1];
+				innleggtabell[nesteLedig - 1] = null;
+				nesteLedig--;
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public int[] search(String keyword) {
-		
-		throw new UnsupportedOperationException(TODO.method());
-
+		ArrayList<Integer> ids = new ArrayList<>();
+		for (int i = 0; i < innleggtabell.length; i++) {
+			if (innleggtabell[i].toString().contains(keyword)) {
+				ids.add(innleggtabell[i].getId());
+			}
+		}
+		int[] result = new int[ids.size()];
+		for (int i = 0; i < result.length; i++) {
+			result[i] = ids.get(i);
+		}
+		return result;
 	}
 }
