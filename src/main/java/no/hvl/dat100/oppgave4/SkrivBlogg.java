@@ -18,8 +18,8 @@ public class SkrivBlogg {
 
 		try {
 			writer = new PrintWriter(mappe + filnavn);
-			for (Innlegg e : innleggTab) {
-				writer.println(e.toString());
+			for (int i = 0; i < samling.getAntall(); i++) {
+				writer.println(innleggTab[i].toString());
 			}
 			completed = true;
 		} catch (FileNotFoundException e) {

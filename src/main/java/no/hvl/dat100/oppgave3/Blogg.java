@@ -60,7 +60,8 @@ public class Blogg {
 		}
 		return false;
 	}
-	
+
+	@Override
 	public String toString() {
 		String str = nesteLedig + "\n";
 
