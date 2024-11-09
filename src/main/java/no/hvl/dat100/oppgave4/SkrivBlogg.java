@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import no.hvl.dat100.common.TODO;
 import no.hvl.dat100.oppgave1.Innlegg;
 import no.hvl.dat100.oppgave3.*;
+import no.hvl.dat100.oppgave6.HtmlBlogg;
 
 public class SkrivBlogg {
 
@@ -18,8 +19,12 @@ public class SkrivBlogg {
 
 		try {
 			writer = new PrintWriter(mappe + filnavn);
-			for (int i = 0; i < samling.getAntall(); i++) {
-				writer.println(innleggTab[i].toString());
+			if (samling.getClass() == HtmlBlogg.class) {
+				writer.print(samling.toString());
+			} else {
+				for (int i = 0; i < samling.getAntall(); i++) {
+					writer.print(innleggTab[i].toString());
+				}
 			}
 			completed = true;
 		} catch (FileNotFoundException e) {

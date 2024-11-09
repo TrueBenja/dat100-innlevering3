@@ -30,12 +30,10 @@ public class Blogg {
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
-		int pos = 0;
 		for (int i = 0; i < nesteLedig; i++) {
 			if (innleggtabell[i].erLik(innlegg)) {
-				return pos;
+				return i;
 			}
-			pos++;
 		}
 		return -1;
 	}
