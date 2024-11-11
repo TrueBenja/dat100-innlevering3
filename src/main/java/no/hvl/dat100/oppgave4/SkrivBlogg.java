@@ -19,13 +19,7 @@ public class SkrivBlogg {
 
 		try {
 			writer = new PrintWriter(mappe + filnavn);
-			if (samling.getClass() == HtmlBlogg.class) {
-				writer.print(samling.toString());
-			} else {
-				for (int i = 0; i < samling.getAntall(); i++) {
-					writer.print(innleggTab[i].toString());
-				}
-			}
+			writer.println(samling.toString());
 			completed = true;
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
