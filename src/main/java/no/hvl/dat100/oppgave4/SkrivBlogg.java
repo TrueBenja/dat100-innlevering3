@@ -15,8 +15,6 @@ public class SkrivBlogg {
 
 		PrintWriter writer = null;
 
-		Innlegg[] innleggTab = samling.getSamling();
-
 		try {
 			writer = new PrintWriter(mappe + filnavn);
 			writer.println(samling.toString());
