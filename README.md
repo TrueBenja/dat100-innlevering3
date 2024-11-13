@@ -1,5 +1,7 @@
 # DAT100 - Obligatoriske Innlevering 3
 
+*Av Benjamin Nordeide Storebø og Jakob Austrheim*
+
 ## Introduksjon
 
 Dere skal skrive Java-kode for klasser til et blogg-system på nettet. I tillegg skal dere skrive metoder som bruker input/output og filer for å lagre å hente inn blogg-innlegg.  
